@@ -1,0 +1,852 @@
+$xl: 5em;
+$md: calc(0.6rem + 0.7vmax); 
+
+@import url('https://fonts.googleapis.com/css?family=Karla|Quantico');
+
+//media queries-------------------------
+$phone-tab: '(max-width: 800px)';
+$tab: '(max-width: 800px) and (min-height: 900px)';
+$phone: '(max-width: 600px)';
+$medium: '(min-width: 400px) and (max-width: 840px) and (max-height: 1300px)';
+
+//media query mixin for responsive design----------------
+@mixin media($query){
+  @media only screen and #{$query}{
+    @content;
+ }
+}
+//-------------------------------------------------
+
+
+//mixin for position---------------
+@mixin position($type, $top, $left){
+  position: $type;
+  top: $top;
+  left: $left;
+}
+
+
+//mixin for display flex---------------
+@mixin display($direction, $justify, $align){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+
+
+body{
+  background: black;
+  height: 100%;
+  font-family: 'Karla';
+  overflow-x: hidden;
+  cursor: default;
+}
+
+::-webkit-scrollbar { //hide scrollbar for chrome and safari
+    display: none; 
+}
+
+
+//loading ----------------------------------------------------
+#loader {
+  @include position('relative', 0, 0);
+  width: 100%;
+  height: 100vh;
+  
+  h1{
+    @include position(absolute, 60%, 50%);
+    transform: translate(-50%, -50%);
+    color: #d3d3d3;
+    width: 100%;
+    text-align: center;
+    font-size:calc(1em + 1.7vmax);
+    animation: opacityAnim 3s ease infinite;
+  }
+  
+  #wrap{
+     @include display(row, center, center);
+     @include position(absolute, 50%, 50%);
+     transform: translate(-50%, -50%);
+     width: 50%;
+     height: 10%;
+     animation: opacityAnim 1 ease infinite;
+   
+  .cube{
+    width: 80px;
+    height: 80px;
+    animation: bounce 2s ease infinite;
+    @include media($phone){
+      width: 50px;
+      height: 50px;
+    } 
+  }
+  
+  #cube1{
+    animation-delay: .2s;
+  }
+  #cube2{
+    animation-delay: .4s;
+  }
+  #cube3{
+    animation-delay: .6s;
+  }
+ }
+}
+//----------------------------------------------------------------------------------
+ 
+#app{
+  display: none; //while loading
+}
+
+
+
+
+//HOME SECTION STYLES_________________________________________________
+#home{
+  @include position(relative, 0, 0);
+  height: 120vh;
+  width: 100%;
+  @include media($tab){
+    height: 100vh;
+  }
+  
+  canvas{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    cursor:default;
+  }
+  
+  h1{
+    @include position(absolute, 45%, 0%);
+    transform: translateY(-50%) ;
+    font-size:calc(4em + 2.7vmax);
+    font-weight: 800;
+    font-family: 'Quantico';
+    color: #050505;
+    border: none;
+    outline: none;
+    opacity: 1;
+    width: 100vw;
+    line-height: 1.2;
+    box-shadow: 1500px 0px 0px inset #050505;
+    text-align: center !important;
+    text-shadow: none;
+     @include media($phone){
+      font-size: 2.8em;
+    } 
+    @include media($tab){
+      top: 54%
+    } 
+  }
+  
+  p{
+    @include position(absolute, 64%, 50%);
+    transform: translate(-50%, -50%);
+    font-size: $md;
+    color:#050505;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: 0px -400px 0px inset #050505;
+    @include media($tab){
+      top: 67%
+    } 
+  }
+  
+  >button{
+       @include position(absolute, 60%, 0%);
+        cursor: pointer;
+        scale: 1;
+        width: 220px;
+        height: auto;
+        margin: 2%;
+        padding: 2px 7px;
+        font-size: $md;
+        font-weight: 400;
+        color: #444; 
+        border: none;
+        border-radius: 5px;
+        background: #111;
+        text-align: center;
+        letter-spacing: 0.1px;
+        text-transform: uppercase;
+        transition: all 150ms;
+       @include media($phone-tab){
+          top: 3%;
+          width: 100px;
+          background: none;
+          color: white;
+    }
+    &:hover{
+      background: white;
+      color: #0a0a0a;
+      border: none;
+    }
+  }
+  
+  #project-btn{
+    left: 10% !important;
+    transform: translate(-50%, -50%);
+    padding-left: 90px;
+    box-shadow: -30px -10px #070707;
+     &:hover{
+        box-shadow: -30px -10px #d3d3d3;
+    }
+     @include media($phone-tab){
+       left: 15%;
+       padding-left:0px;
+       box-shadow: none;
+       animation: opacityAnim 3s ease infinite;
+    }
+  }
+  
+  #about-btn{
+     left: 85% !important;
+     padding-right: 90px;
+     transform: translate(-50%, -50%);
+     box-shadow: 30px -10px #070707;
+      &:hover{
+        box-shadow: 30px -10px #d3d3d3;
+    }
+     @include media($phone-tab){
+       padding-right: 0px;
+       left: 85%;
+       box-shadow: none;
+       animation: opacityAnim 3s ease infinite;
+    }
+  }
+  
+  .line{
+      @include position(absolute, 67%, 0%);
+      display: inline-block;
+      width: 200px;
+      height: 4px;
+      border: none;
+      box-shadow: 0px 1px 4px inset #111;
+     @include media($phone-tab){
+       display: none;
+    }
+      
+     .in-line{
+       width: 10px;
+       height: 2px;
+       box-shadow: 0px 2px inset grey;
+     }
+    
+    .one{
+      margin-left: 3%;
+    }
+    .two{
+      margin-left: 80%;
+     }
+   }
+  #line-0{
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  #line-1{
+     left: 12%;
+    transform: translate(-50%, -50%)
+  }
+  
+  #line-2{
+     left: 87%;
+    transform: translate(-50%, -50%)
+  }
+}
+//-----------------------------------------------------------------------------
+
+
+
+
+//PROJECTS SECTION STYLES_________________________________________________________
+#projects{
+  @include position(relative, 0%, 0%);
+  padding:0;
+  margin: 0;
+  width: 100%;
+  height: 120vh;
+  font-size: calc(1em + 2.7vmax);
+  text-align: center;
+  transition: visibility 5s ease;
+  @include media($tab){
+    height: 100vh;
+  }
+ 
+  h3{
+   @include position(absolute, -4%, 50%);
+    transform: translateX(-50%);
+    font-size: $md;
+    color: #CA7564;
+    padding: 10px;
+    @include media($phone-tab){
+      top: -6%;
+    }
+  }
+  h1{
+    margin: 1%;
+    padding: 1%;
+    color:  #d9d9d9;
+    font-weight: 800;
+    font-family: 'Quantico';
+    line-height: 1;
+  }
+  
+  .small-icon{
+     @include display(row, space-between, center);
+    
+    .icon-s{
+       visibility: hidden;
+       color: grey; 
+       font-size: calc(0.5em + 2vmax);
+       @include media($phone-tab){
+         visibility: visible;
+         cursor: pointer;
+      }
+    }
+  }
+  
+  p{
+    padding: 0 5%;
+    font-size: $md;
+    color: grey;
+    
+    .highlight{
+      color: #CA7564;
+    }
+  }
+  
+  
+  
+  .slider{
+    @include display(row, space-between, center);
+    margin: -2% 5%;
+    margin-bottom: 0;
+    @include media($phone-tab){
+       display: block;
+        margin: 2% 0;
+      }
+     @include media($tab){
+        margin: 7% 0!important;
+      }
+    .arrow {
+      width: calc(6.5rem + 3vmax);
+      height: calc(6.5rem + 3vmax);
+      border-radius: 50%;
+      border: 2px dotted #1a1a1a;
+      transition: all 100ms ease;
+      transition-delay: 0.5s;
+      cursor: pointer;
+      @include media($phone-tab){
+        display: none;
+      }
+      .outer-circle{
+        margin: 5% auto;
+        width: 85%;
+        height: 85%;
+        border-radius: 50%;
+        border: 2px dashed grey;
+        transition-delay: .2s;
+        .inner-circle{
+          margin: 10% auto;
+          width: 80%;
+          height: 80%;
+          border-radius: 50%;
+          border: 2px dotted #1a1a1a;
+          @include display(row, center, center);
+          .icon{
+            color: grey; 
+            font-size: calc(0.3em + 2vmax);
+            @include media($phone-tab){
+             display: none;
+              
+            }
+          }
+        }
+      }
+      &:hover{
+        box-shadow: 0px 0px 7px 5px inset white, 0px 0px 50px #CA7564;
+        border-color: transparent;
+        .outer-circle{
+          border-color: transparent;
+        }
+        .inner-circle{
+          border-color: transparent;
+          .icon{
+            color:white;
+          }
+        }
+      }
+    }
+    
+  
+  .inner{
+    @include position(relative, 0, 0);
+    border-radius: 0%;
+    border: none;
+    width: 640px;
+    height: 350px;
+    overflow: visible;
+    background: transparent;
+     -webkit-mask-image: radial-gradient(black 30%, rgba(0, 0, 0, 0.8) , rgba(255, 255, 255, 0.1) );
+    -webkit-mask-size: cover;
+    mask-image: radial-gradient(black 30%, rgba(0, 0, 0, 0.8) , rgba(255, 255, 255, 0.1) );
+    mask-size: cover;
+    mask-position: center;
+    mask-type: alpha;
+    @include media($phone-tab){
+        width: 90vw;
+        height: auto;
+        margin: 0 auto;
+      }
+    img{
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+     }
+    
+    .mask{
+      @include position(absolute, 0, 50%);
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      box-shadow: 0px 0px 0px inset #CA7564;
+      z-index: 999;
+    }
+    
+    .graph{
+      position: absolute;
+      bottom: -1px;
+      left: 0px;
+      width: 102%; 
+      height: 45%;
+      background: linear-gradient(rgba(0,0,0,0.9), #000 );
+      z-index: 999;
+      @include display(column, flex-start, flex-start);
+      
+      .bar{
+        width:90%;
+        height: 10%;
+        @include display(row, flex-start, center);
+        border-bottom: 0.2px solid black;
+        z-index: 999;
+        color: white;
+        margin: 2% 3%;
+        
+        p{
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+        
+        .shadow{
+          height: 5px;
+          width: 450px;
+          background: black;
+          border-width: 0.2px 0px;
+          margin-left: 7%;
+        }
+      }
+    }
+  }
+ }
+  
+  #buttons{
+    cursor: pointer;
+    margin-top: -2%;
+    @include media($phone-tab){
+       margin-top:0;
+    }
+     @include media($tab){
+        margin-top: 2%;
+      }
+    @include display(row, center, center);
+    a{
+      margin: 0 2%;
+    }
+    .button{
+        width: 100%;
+        height: auto;
+        padding: 12px 24px;
+        font-size: $md;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #CA7564;
+        margin: 2%;
+        box-sizing: border-box;
+        background: transparent;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 800;
+        box-shadow: none;
+        border-radius: 5px;
+        transition: all 150ms;
+      @include media($phone){
+        padding: 12px 12px;
+      }
+      &:hover{
+          background: white;
+          color: black;
+          box-shadow: 0px 5px 25px #CA7564;
+        }
+    }
+  }
+}
+//--------------------------------------------------------------------------------
+
+
+
+
+//ABOUT SECTION STYLES___________________________________________________________
+#about{
+  @include position(relative, 0, 0);
+  height: 120vh;
+  width: 100%;
+  text-align: center;
+  font-size: calc(1em + 2.7vmax);
+  @include media($tab){
+    height: 90vh;
+  }
+  
+  
+  h3{
+     font-size: $md;
+     color: #CA7564;
+     margin-top: 10% !important;
+     padding: 0 !important;
+     @include media($tab){
+        margin-top: 12%;
+      }
+  }
+  
+  h1{
+    margin-top: -1% !important;
+    padding: 0 !important;
+    font-weight: 800;
+    color:  #d9d9d9;
+    font-family: 'Quantico';
+  }
+  
+  hr{
+    margin: 2% auto;
+    margin-bottom: 1%;
+    border: none;
+    height: 1px;
+    width: 20%;
+    box-shadow: 0px 1px grey;
+    @include media($phone){
+      width: 40%;
+    }
+  }
+  
+  #head{
+    color: white;
+    margin: 2% auto !important;
+    margin-bottom: 0;
+  }
+  
+   p{
+     margin: -3% auto;
+     margin-bottom: 1%;
+     padding: 0 4%;
+     width: 50%;
+     font-size: $md;
+     color: grey;
+     @include media($phone-tab){
+       width: 90%;
+     }
+      @include media($tab){
+        margin: 1% auto;
+        font-size: 0.5em;
+      }
+    
+    >span{
+      color: #CA7564;
+      font-weight: 800;
+    }
+     
+  }
+  
+  .skills{
+       margin-top: -1%;
+       color: #CA7564 !important;
+       font-weight: 800 !important;
+     }
+   
+    .icon{
+      position: absolute;
+      color: #FFF5F1;
+      opacity: 0.3;
+      transform: scale(0.2);
+      font-size: calc(28px + 2vmax);
+      @include media($phone){
+        font-size: 24px;
+        opacity: 0.2!important;
+      }
+      @include media($medium){
+        opacity: 0.2!important;
+      }
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+  
+  .i-1{
+    @include position(absolute, 5%, 25%);
+  }
+  .i-2{
+    @include position(absolute, 30%, 12%);
+  }
+  .i-3{
+    @include position(absolute, 60%, 25%);
+    @include media($medium){
+      top: 50%;
+    }
+  }
+  .i-4{
+    @include position(absolute, 55%, 4%);
+    @include media($medium){
+      top: 45%;
+    }
+  }
+  .i-5{
+    @include position(absolute, 5%, 4%);
+  }
+  .i-6{
+    top: 5%;
+    right: 25%;
+  }
+  .i-7{
+     top: 30%;
+     right: 12%;
+  }
+  .i-8{
+    top: 60%;
+    right: 25%;
+    @include media($medium){
+      top: 50%;
+    }
+  }
+  .i-9{
+    top: 55%;
+    right: 4%;
+    @include media($medium){
+      top: 45%;
+    }
+  }
+  .i-10{
+    top: 5%;
+    right: 4%;
+  }
+  .i-11{
+    top: 58%;
+    right: 47%;
+    @include media($medium){
+      top: 48%;
+    }
+  }
+}
+//---------------------------------------------------------------------------------------
+
+
+
+
+//CONTACT SECTION STYLES_________________________________________________________________
+#contact{
+  @include position(relative, 0%, 0%);
+  padding:0;
+  margin: 0;
+  width: 100%;
+  height: 90vh;
+  text-align: center;
+  transform: translate3d(0,100, 0);
+  font-size: calc(1em + 2.7vmax);
+  @include media($tab){
+    height: 100vh;
+  }
+  
+  h3{
+    font-size: $md;
+    color: #CA7564;
+    margin: 0;
+    padding: 0;
+  }
+  h1{
+    margin: -1%;
+    padding: 0;
+    font-weight: 800;
+    color:  #d9d9d9;
+    font-family: 'Quantico';
+  }
+  
+  .wrapper{
+    @include display(row, center, center);
+    margin-top: calc(10% + 7vmax);
+    @include media($tab){
+      margin-top: 25%;
+    }
+    @include media($phone-tab){
+      margin-top: 25%!important;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 0px 0px;
+    }
+    
+    .card{
+       width: 480px;
+       height: auto;
+       background: rgba(0,0,0,0.8);
+       padding: 20px 0px;
+       border: 0.5px solid white;
+       z-index: 999!important;
+       text-align: center!important;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       flex-wrap: no-wrap;
+       transform: translate3d(0,0,0);
+      @include media($phone-tab){
+        width: auto;
+        background: rgba(0,0,0,0.5);
+      }
+      
+       
+      > a button{
+        width: 99%;
+        height: auto;
+        margin: 0 0;
+        padding: 20px;
+        font-size: $md;
+        font-weight: 800;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        background:#212121;
+        text-align: center;
+        box-shadow: 0px 0px 3px black;
+        transition: all 150ms;
+        text-transform: uppercase;
+        cursor: pointer;
+        
+    &:hover{
+      background: white;
+      color: black;
+      border: none;
+    }
+ 
+  }
+     
+      .icon{
+        color: #fff5f1;
+        font-size: calc(2rem + 1vmax);
+        margin: 0 auto;
+      }
+      
+    
+      p{
+        color:  #555;
+        font-size: $md;
+        text-align: center;
+      }
+      
+    }
+  }
+   #email{
+     @include media($phone-tab){
+      grid-row: 0/1;
+      grid-column: 1/3;
+   }
+    
+  }
+  .snap-wrap{
+    display: block;
+    @include position(absolute, 30%, 0);
+    width: 100%;
+    height: 500px;
+    z-index: -1;
+  
+  #snap{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    
+    >img{
+      width: 100%;
+      height: 100%;
+      
+    }
+  
+  &:after{
+     backface-visibility: hidden;
+     background: linear-gradient(#000, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+     content: "";
+     width: 100%;
+     height: 110%;
+     top: -1%;
+     left: 0;
+     right: 0;
+     position: absolute;
+     z-index: 2;
+    }
+   }
+  }
+  >p{
+    @include position(absolute, 100%, 50%);
+    transform: translateX(-50%);
+    font-size: $md;
+    color: #d9d9d9;
+    z-index: 3;
+     @include media($phone){
+     top: 110%;
+   }
+  }
+}
+//---------------------------------------------------------------------------
+
+
+
+//keyframes animations------------------------------------------
+.anim{
+  transform: translateY(150px);
+}
+
+.come-in {
+  animation: come-in 1s ease-out forwards;
+}
+
+
+@keyframes opacityAnim{
+  0%{
+    opacity: .5;
+  }
+  50%{
+    opacity: .25;
+  }
+  100%{
+    opacity: .5;
+  }
+}
+
+
+@keyframes bounce{
+  0%{
+    transform: translateY(0);
+  }
+  20%{
+    transform: translateY(-50px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@keyframes come-in {
+  to { transform: translateY(0);}
+}
+//-------------------------------------------------------------------------
