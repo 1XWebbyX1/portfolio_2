@@ -455,7 +455,17 @@ About = function (_React$Component8) {_inherits(About, _React$Component8);functi
 
 
 //CONTACT SECTION______________________________________________________________
-var Contact = function (_React$Component9) {_inherits(Contact, _React$Component9);function Contact() {_classCallCheck(this, Contact);return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).apply(this, arguments));}_createClass(Contact, [{ key: 'render', value: function render()
+var Contact = function (_React$Component9) {_inherits(Contact, _React$Component9);function Contact() {_classCallCheck(this, Contact);return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).apply(this, arguments));}_createClass(Contact, [{ key: 'componentDidMount', value: function componentDidMount()
+
+    {
+      hasWebP().then(function () {
+        $('#snap img').attr('src', 'http://a.webpurr.com/WjqG.webp');
+      }, function () {
+        $('#snap img').attr('src', 'https://i.ibb.co/mH3cvXx/mike-wilson-48019-unsplashedited.jpg');
+        // ... code to deal with the lack of WebP ...
+      });
+    } }, { key: 'render', value: function render()
+
     {
       return (
         React.createElement('section', { id: 'contact' },

@@ -456,6 +456,16 @@ class About extends React.Component{
 
 //CONTACT SECTION______________________________________________________________
 class Contact extends React.Component{
+  
+  componentDidMount(){
+      hasWebP().then(function() {
+      $('#snap img').attr('src', 'http://a.webpurr.com/WjqG.webp');
+    }, function() {
+      $('#snap img').attr('src', 'https://i.ibb.co/mH3cvXx/mike-wilson-48019-unsplashedited.jpg');
+  // ... code to deal with the lack of WebP ...
+   });
+  }
+  
   render(){
     return(
       <section id='contact'>
